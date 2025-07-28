@@ -8,10 +8,3 @@
 @theme {
   --color-primary: #4b0082;
 }
-
-/* Apka custom body styling */
-body {
-  background-color: #f5f5dc;
-  margin: 0;
-  padding: 0;
-}

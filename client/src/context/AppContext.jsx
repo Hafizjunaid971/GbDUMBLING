@@ -31,6 +31,7 @@ export const AppContextProvider = ({ children }) => {
   };
 
   // fetch user auth status ,user Data and cart items
+  //app deploy
   const fetchUser = async () => {
     try {
       const { data } = await axios.get("/api/user/is-auth");

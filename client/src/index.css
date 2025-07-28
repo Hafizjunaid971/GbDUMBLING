@@ -1,19 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
 
-@import "tailwindcss";
+/* Tailwind directives - zaruri hain tailwind ki styling ke liye */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   font-family: "Outfit", sans-serif;
 }
 
-@theme {
+:root {
   --color-primary: #4b0082;
 }
-/* index.css ya App.css */
-body {
-  /* background-color: #fff4e6; */
 
-background-color: #f5f5dc;
-/* background-color: #ffe5e5; */
+/* Apka custom body styling */
+body {
+  background-color: #f5f5dc;
   margin: 0;
   padding: 0;
 }

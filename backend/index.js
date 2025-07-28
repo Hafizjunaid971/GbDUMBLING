@@ -12,9 +12,11 @@ import addressRoutes from "./routes/address.routes.js";
 import orderRoutes from "./routes/order.routes.js";
 
 import { connectCloudinary } from "./config/cloudinary.js";
+import serverless from "serverless-http";
 
 const app = express();
 
+await connectDB();
 await connectCloudinary();
 // allow multiple origins
 const allowedOrigins = process.env.URL;
@@ -32,8 +34,10 @@ app.use("/api/cart", cartRoutes);
 app.use("/api/address", addressRoutes);
 app.use("/api/order", orderRoutes);
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  connectDB();
-  console.log(`Server is running on port ${PORT}`);
-});
+
+export const handler = serverless(app);
+// const PORT = process.env.PORT || 5000;
+// app.listen(PORT, () => {
+//   connectDB();
+//   console.log(`Server is running on port ${PORT}`);
+// });

@@ -16,18 +16,19 @@ import dotenv from "dotenv";
 // Load environment variables
 dotenv.config();
 
+// Configure Cloudinary once
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// Configure Cloudinary storage
+// Configure Cloudinary storage for Multer
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
-    folder: "products", // Replace with your desired folder name
-    allowed_formats: ["jpg", "png", "jpeg"],
+    folder: "products", // Cloudinary folder name
+    allowed_formats: ["jpg", "png", "jpeg"], // Allowed file types
   },
 });
 

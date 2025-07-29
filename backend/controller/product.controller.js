@@ -5,7 +5,7 @@ export const addProduct = async (req, res) => {
   try {
     const { name, offerPrice, description, category } = req.body;
     // const image = req.files?.map((file) => `/uploads/${file.filename}`);
-    const image = req.files?.map((file) => file.filename);
+   const image = req.files?.map((file) => file.path);
     if (
       !name ||
       !offerPrice ||

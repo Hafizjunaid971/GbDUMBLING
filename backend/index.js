@@ -110,6 +110,7 @@ dotenv.config();
 
 const app = express();
 // const allowedOrigins = process.env.URL;
+// Dummy change to trigger Vercel redeploy
 
 const allowedOrigins = process.env.URL.split(",");
 

@@ -112,7 +112,7 @@ const app = express();
 // const allowedOrigins = process.env.URL;
 
 // app.use(cors({ origin: allowedOrigins, credentials: true }));
-const allowedOrigins = process.env.URL?.split(",");
+const allowedOrigins = process.env.URL.split(",");
 
 app.use(
   cors({
@@ -126,6 +126,7 @@ app.use(
     credentials: true,
   })
 );
+
 
 app.use(cookieParser());
 app.use(express.json());

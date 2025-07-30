@@ -111,9 +111,14 @@ dotenv.config();
 const app = express();
 // const allowedOrigins = process.env.URL;
 
-// app.use(cors({ origin: allowedOrigins, credentials: true }));
-const allowedOrigins = process.env.URL.split(",");
+const allowedOrigins = [
+  "https://gb-dumbling.vercel.app", // production
+  "https://gb-dumbling-2iol.vercel.app", // preview
+  "https://gb-dumbling-2iol-git-master-developers-projects-05ab7480.vercel.app", // preview
+  "http://localhost:5173", // local dev
+];
 
+// CORS setup
 app.use(
   cors({
     origin: function (origin, callback) {
@@ -127,9 +132,9 @@ app.use(
   })
 );
 
-
 app.use(cookieParser());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use("/images", express.static("uploads"));
 app.use("/api/user", userRoutes);

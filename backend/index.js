@@ -111,30 +111,24 @@ dotenv.config();
 const app = express();
 // const allowedOrigins = process.env.URL;
 
-const allowedOrigins = [
-  "https://gb-dumbling.vercel.app", // production
-  "https://gb-dumbling-2iol.vercel.app", // preview
-  "https://gb-dumbling-2iol-git-master-developers-projects-05ab7480.vercel.app", // preview
-  "http://localhost:5173", // local dev
-];
+const allowedOrigins = process.env.URL.split(",");
 
-// CORS setup
 app.use(
   cors({
     origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
+      // Allow requests with no origin (like mobile apps or curl)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
       } else {
-        callback(new Error("Not allowed by CORS"));
+        return callback(new Error("Not allowed by CORS"));
       }
     },
     credentials: true,
   })
 );
-
 app.use(cookieParser());
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
 app.use("/images", express.static("uploads"));
 app.use("/api/user", userRoutes);

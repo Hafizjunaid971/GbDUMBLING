@@ -112,24 +112,25 @@ const app = express();
 // const allowedOrigins = process.env.URL;
 // Dummy change to trigger Vercel redeploy
 
+const cors = require("cors");
+
 const allowedOrigins = [
-  'https://gb-dumbling.vercel.app',                // production frontend
-  /^https:\/\/gb-dumbling-[a-z0-9\-]+\.vercel\.app$/  // preview frontends
+  "https://gb-dumbling.vercel.app", // main production frontend
+  "https://gb-dumbling-2iol.vercel.app", // preview (old)
+  "https://gb-dumbling-2iol-git-master-developers-projects-05ab7480.vercel.app", // latest preview
 ];
 
 app.use(cors({
   origin: function (origin, callback) {
-    if (!origin) return callback(null, true); // allow non-browser clients like Postman
-    if (allowedOrigins.some(o =>
-      typeof o === 'string' ? o === origin : o.test(origin)
-    )) {
+    if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS: ' + origin));
+      callback(new Error("Not allowed by CORS"));
     }
   },
   credentials: true,
 }));
+
 
 app.use(cookieParser());
 app.use(express.json());

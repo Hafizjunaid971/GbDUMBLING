@@ -167,19 +167,25 @@ dotenv.config();
 
 const app = express();
 
-// ✅ Set allowed CORS origins from ENV (comma-separated)
-const allowedOrigins = process.env.URL?.split(",") || [];
+// Set allowed CORS origins from ENV (comma-separated)
+const allowedOrigins = (process.env.URL || "").split(",").map(origin => origin.trim());
 
 app.use(cors({
   origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      console.error("❌ CORS Blocked:", origin);
-      callback(new Error("Not allowed by CORS"));
+    // Allow requests with no origin (e.g., server-to-server or Postman)
+    if (!origin) return callback(null, true);
+    // Normalize origins by removing trailing slashes
+    const normalizedOrigin = origin.replace(/\/$/, "");
+    const normalizedAllowedOrigins = allowedOrigins.map(o => o.replace(/\/$/, ""));
+    if (normalizedAllowedOrigins.includes(normalizedOrigin)) {
+      return callback(null, true);
     }
+    console.error("❌ CORS Blocked:", origin);
+    return callback(new Error("Not allowed by CORS"));
   },
-  credentials: true,
+  credentials: true, // Allow cookies and credentials
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Explicitly allow methods
+  allowedHeaders: ["Content-Type", "Authorization"], // Allow specific headers
 }));
 
 app.use(cookieParser());
@@ -193,7 +199,7 @@ app.use("/api/cart", cartRoutes);
 app.use("/api/address", addressRoutes);
 app.use("/api/order", orderRoutes);
 
-// ✅ Connect to MongoDB once before exporting
+// Connect to MongoDB
 await connectDB();
 
 export default app;

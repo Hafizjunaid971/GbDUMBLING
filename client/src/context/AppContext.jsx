@@ -19,7 +19,7 @@ export const AppContextProvider = ({ children }) => {
   // check seller status
   const fetchSeller = async () => {
     try {
-      const { data } = await axios.get("/api/seller/is-auth");
+      const { data } = await axios.get("/api/seller/is-auth",{ credentials: "include" });
       if (data.success) {
         setIsSeller(true);
       } else {

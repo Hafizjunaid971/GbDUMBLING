@@ -16,3 +16,5 @@ router.get("/id", getProductById);
 router.post("/stock", authSeller, changeStock);
 
 export default router;
+
+

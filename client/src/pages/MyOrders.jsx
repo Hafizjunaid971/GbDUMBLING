@@ -49,11 +49,17 @@ const MyOrders = () => {
             >
               <div className="flex items-center mb-4 md:mb-0">
                 <div className="p-4 rounded-lg">
-                  <img
+                  {/* <img
                     src={`http://localhost:5000/images/${item.product.image[0]}`}
                     alt=""
                     className="w-16 h-16"
-                  />
+                  /> */}
+                    <img
+                  className="group-hover:scale-105 transition max-w-26 md:max-w-36"
+                  src={product.image[0]}
+                  alt={product.name}
+                />
+
                 </div>
 
                 <div className="ml-4">

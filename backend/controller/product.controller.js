@@ -5,15 +5,14 @@ export const addProduct = async (req, res) => {
   try {
     const { name, offerPrice, description, category } = req.body;
     // const image = req.files?.map((file) => `/uploads/${file.filename}`);
-   const image = req.files?.map((file) => file.path);
+const image = req.files?.map((file) => file.path); // ✅ for Cloudinary URLs
     if (
       !name ||
       !offerPrice ||
       !description ||
       !category ||
       !image ||
-      image.length === 0
-    ) {
+ !image || image.length === 0    ) {
       return res.status(400).json({
         success: false,
         message: "All fields including images are required",

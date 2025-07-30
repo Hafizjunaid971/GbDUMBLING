@@ -115,11 +115,17 @@ const shippingFee = 150;
                 }}
                 className="cursor-pointer w-24 h-24 flex items-center justify-center border border-gray-300 rounded cusror-pointer"
               >
-                <img
+                {/* <img
                   className="max-w-full h-full object-cover"
                   src={`http://localhost:5000/images/${product.image[0]}`}
                   alt={product.name}
+                /> */}
+                <img
+                  className="group-hover:scale-105 transition max-w-26 md:max-w-36"
+                  src={product.image[0]}
+                  alt={product.name}
                 />
+
               </div>
               <div>
                 <p className="hidden md:block font-semibold">{product.name}</p>

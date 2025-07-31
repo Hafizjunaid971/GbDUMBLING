@@ -15,7 +15,9 @@ const Footer = () => {
             </svg>
             {/* Facebook */}
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M13.5 9H15V6.5h-1.5c-1.933 0-3.5 1.567-3.5 3.5v1.5H8v3h2.5V21h3v-7.5H16l.5-3h-3z" />
+              <a href="https://www.facebook.com/profile.php?id=61557787814486&rdid=1MqOV7T3LBa7nfxn&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BhETmNMyb%2F#" target="_blank">
+                <path d="M13.5 9H15V6.5h-1.5c-1.933 0-3.5 1.567-3.5 3.5v1.5H8v3h2.5V21h3v-7.5H16l.5-3h-3z" />
+              </a>
             </svg>
             {/* Twitter */}
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">

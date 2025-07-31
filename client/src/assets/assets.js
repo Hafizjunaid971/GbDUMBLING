@@ -75,7 +75,7 @@ import gb23 from "./gb23.jpeg";
 import gb24 from "./gb24.jpeg";
 import gb25 from "./gb25.jpeg";
 import gb26 from "./gb26.jpeg";
-import gb1 from "./gb1.jpeg"
+import gb1 from "./gb1.jpeg";
 export const assets = {
   logo,
   search_icon,
@@ -146,7 +146,7 @@ export const categories = [
   {
     text: "Drink",
     path: "Coldrink",
-    image: grain_image,
+    image: pepsi_image,
     bgColor: "#F1E3F9",
   },
 ];

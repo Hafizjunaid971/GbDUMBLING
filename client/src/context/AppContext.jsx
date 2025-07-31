@@ -44,7 +44,7 @@ export const AppContextProvider = ({ children }) => {
     } catch (error) {
   if (error.response?.status === 401) {
     // User not logged in — skip toast
-    toast.error("Please Login");
+    // toast.error("Please Login");
   } else {
     toast.error(error.message);
   }
@@ -64,7 +64,7 @@ export const AppContextProvider = ({ children }) => {
     }catch (error) {
   if (error.response?.status === 401) {
     // User not logged in — skip toast
-    toast.error("Please Login");
+    // toast.error("Please Login");
   } else {
     toast.error(error.message);
   }

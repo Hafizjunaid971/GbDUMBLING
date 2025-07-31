@@ -131,10 +131,10 @@ const shippingFee = 150;
                 <p className="hidden md:block font-semibold">{product.name}</p>
                 <div className="font-normal text-gray-500/70">
                   <p>
-                    Weight: <span>{product.weight || "N/A"}</span>
+                   &nbsp; Weight: <span>{product.weight || "N/A"}</span>
                   </p>
                   <div className="flex items-center">
-                    <p>Qty:</p>
+                    <p>&nbsp;Qty:</p>
                     <select
                       onChange={(e) =>
                         updateCartItem(product._id, Number(e.target.value))

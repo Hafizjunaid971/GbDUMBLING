@@ -25,13 +25,13 @@ const AddProduct = () => {
         formData.append("image", files[i]);
       }
 
-      const { data } = await axios.post("/api/product/add-product", formData);
-    //   const { data } = await axios.post("/api/product/add-product", formData, {
-    //   withCredentials: true, // Include token cookie
-    //   headers: {
-    //     "Content-Type": "multipart/form-data", // Required for file uploads
-    //   },
-    // });
+     // const { data } = await axios.post("/api/product/add-product", formData);
+  const { data } = await axios.post("/api/product/add-product", formData, {
+      withCredentials: true,
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
       if (data.success) {
         toast.success(data.message);
         setName("");

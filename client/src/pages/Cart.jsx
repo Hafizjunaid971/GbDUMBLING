@@ -81,7 +81,7 @@ const shippingFee = 150;
           setCartItems({});
           navigate("/my-orders");
         } else {
-          toast.error(data.message);
+        console.log(error.message)
         }
       }
     } catch (error) {

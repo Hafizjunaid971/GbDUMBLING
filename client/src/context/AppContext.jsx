@@ -44,9 +44,9 @@ export const AppContextProvider = ({ children }) => {
     } catch (error) {
   if (error.response?.status === 401) {
     // User not logged in — skip toast
-    // toast.error("Please Login");
+        console.log(error.message)
   } else {
-    toast.error(error.message);
+    // toast.error(error.message);
   }
 }
 
@@ -64,7 +64,7 @@ export const AppContextProvider = ({ children }) => {
     }catch (error) {
   if (error.response?.status === 401) {
     // User not logged in — skip toast
-    // toast.error("Please Login");
+        console.log(error.message)
   } else {
     toast.error(error.message);
   }
@@ -142,9 +142,12 @@ export const AppContextProvider = ({ children }) => {
       } catch (error) {
   if (error.response?.status === 401) {
     // User not logged in — skip toast
-    toast.error("Please Login");
+    // toast.error("Please Login");
+    console.log("Please Login")
   } else {
-    toast.error(error.message);
+    // toast.error(error.message);
+        console.log(error.message)
+
   }
 }
 

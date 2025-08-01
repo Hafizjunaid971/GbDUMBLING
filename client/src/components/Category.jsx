@@ -10,7 +10,7 @@ const Category = () => {
           <div
             key={index}
             className={`group cursor-pointer py-5 px-3 rounded-lg gap-2 flex flex-col items-center justify-center`}
-            style={{ backgroundColor: category.bgColor }}
+            style={{ backgroundColor: category.bgColor,   color: category.textColor, }}
             onClick={() => {
               navigate(`/products/${category.path.toLowerCase()}`);
               scrollTo(0, 0);

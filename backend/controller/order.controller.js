@@ -64,3 +64,24 @@ export const getAllOrders = async (req, res) => {
     res.status(500).json({ message: "Internal Server Error" });
   }
 };
+
+export const updatePaymentStatus = async (req, res) => {
+  
+  try {
+    const { id } = req.params;
+    const { isPaid } = req.body;
+    console.log("updatePaymentStatus params:", { id, isPaid }); // Debug
+    const order = await Order.findById(id);
+    if (!order) {
+      console.log("Order not found:", id);
+      return res.status(404).json({ message: "Order not found", success: false });
+    }
+    order.isPaid = isPaid;
+    await order.save();
+    console.log("Updated order:", order); // Debug
+    res.status(200).json({ success: true, message: "Payment status updated" });
+  } catch (error) {
+    console.error("Error in updatePaymentStatus:", error.message);
+    res.status(500).json({ message: "Internal Server Error", error: error.message });
+  }
+};

@@ -111,43 +111,56 @@ export const categories = [
     text: "Chicken Momos",
     path: "Chicken",
     image: gb21,
-    bgColor: "#FEF6DA",
+    bgColor: "#000000",
+    textColor: "#FFD700",
+
   },
   {
     text: "Beef Momos",
     path: "Beef",
     image: gb22,
-    bgColor: "#FEE0E0",
+    bgColor: "#000000",
+    textColor: "#FFD700",
+
   },
   {
     text: "Vegetable Momos",
     path: "vegetable",
     image: gb23,
-    bgColor: "#F0F5DE",
+    bgColor: "#000000",
+    textColor: "#FFD700",
+
   },
   {
     text: "Potato Momos",
     path: "Potato",
     image: gb24,
-    bgColor: "#E1F5EC",
+    bgColor: "#000000",
+    textColor: "#FFD700",
+
   },
   {
     text: "Cripsy Momos",
     path: "Cripsy",
     image: gb25,
-    bgColor: "#FEE6CD",
+    bgColor: "#000000",
+    textColor: "#FFD700",
+
   },
   {
     text: "Fishes Momos",
     path: "Fish",
     image: gb26,
-    bgColor: "#E0F6FE",
+    bgColor: "#000000",
+    textColor: "#FFD700",
   },
   {
     text: "Drink",
     path: "Coldrink",
     image: pepsi_image,
-    bgColor: "#F1E3F9",
+    bgColor: "#000000",
+    textColor: "#FFD700",
+
   },
 ];
 

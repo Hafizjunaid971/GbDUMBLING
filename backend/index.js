@@ -1,3 +1,5 @@
+
+
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
@@ -85,7 +87,7 @@ export default app;
 // import dotenv from "dotenv";
 // import { connectDB } from "./config/connectDB.js";
 
-// Routes
+// // Routes
 // import userRoutes from "./routes/user.routes.js";
 // import sellerRoutes from "./routes/seller.routes.js";
 // import productRoutes from "./routes/product.routes.js";

@@ -37,17 +37,17 @@ const Navbar = () => {
     }
   }, []);
   return (
-    <nav className="flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 border-b border-gray-300 bg-white relative transition-all">
+    <nav className="flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 border-b border-gray-300 bg-black relative transition-all">
       <Link to="/">
-        <h2 className="text-2xl font-bold text-primary">GB Dumbling</h2>
+        <h2 class="text-2xl font-bold text-[#FFD700]">GB Dumbling</h2>
       </Link>
 
       {/* Desktop Menu */}
-      <div className="hidden sm:flex items-center gap-8">
+      <div className="hidden sm:flex items-center gap-8 text-[#FFD700]">
         <Link to={"/"}>Home</Link>
         <Link to={"/products"}>All Products</Link>
 
-        <div className="hidden lg:flex items-center text-sm gap-2 border border-gray-300 px-3 rounded-full">
+        <div class="hidden lg:flex items-center text-sm gap-2 border border-white text-white px-3 rounded-full">
           <input
             onChange={(e) => setSearchQuery(e.target.value)}
             className="py-1.5 w-full bg-transparent outline-none placeholder-gray-500"

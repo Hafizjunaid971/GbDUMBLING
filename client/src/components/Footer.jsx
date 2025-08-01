@@ -1,9 +1,9 @@
 const Footer = () => {
   return (
-    <div className="text-gray-500/80 pt-8 px-6 md:px-16 lg:px-24 xl:px-32">
+    <div class="bg-black text-white pt-8 px-6 md:px-16 lg:px-24 xl:px-32">
       <div className="flex flex-wrap justify-between gap-12 md:gap-6">
         <div className="max-w-80">
-          <h1 className="text-3xl font-semibold text-[#212121]">GB Dumbling Corner</h1>
+          <h1 className="text-3xl text-white pt-8 font-semibold text-[#212121]">GB Dumbling Corner</h1>
           <p className="text-sm">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
@@ -31,7 +31,7 @@ const Footer = () => {
         </div>
 
         <div>
-          <p className="text-lg text-gray-800">COMPANY</p>
+          <p className="text-lg text-white pt-8">COMPANY</p>
           <ul className="mt-3 flex flex-col gap-2 text-sm">
             <li>
               <a href="#">About</a>
@@ -52,7 +52,7 @@ const Footer = () => {
         </div>
 
         <div>
-          <p className="text-lg text-gray-800">SUPPORT</p>
+          <p className="text-lg text-white pt-8">SUPPORT</p>
           <ul className="mt-3 flex flex-col gap-2 text-sm">
             <li>
               <a href="#">Help Center</a>
@@ -73,7 +73,7 @@ const Footer = () => {
         </div>
 
         <div className="max-w-80">
-          <p className="text-lg text-gray-800">STAY UPDATED</p>
+          <p className="text-lg text-white pt-8">STAY UPDATED</p>
           <p className="mt-3 text-sm">
             Subscribe to our newsletter for inspiration and special offers.
           </p>

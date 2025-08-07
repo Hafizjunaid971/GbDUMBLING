@@ -42,27 +42,22 @@ const SingleProduct = () => {
                 <div
                   key={index}
                   onClick={() => setThumbnail(image)}
-                  className="border max-w-24 border-gray-500/30 rounded overflow-hidden cursor-pointe"
+                  className="cursor-pointer w-[100px] h-[100px] flex items-center justify-center border border-gray-300 rounded bg-black"
                 >
-                  <img className="group-hover:scale-105 transition max-w-26 md:max-w-36" src={image} alt={`Thumbnail ${index + 1}`} />
-                  {/* <img
-                    src={product.image[0]}
-                    alt={`Thumbnail ${index +1}`}
-                  /> */}
-                    {/* <img
-                  className="group-hover:scale-105 transition max-w-26 md:max-w-36"
-                  src={product.image[0]}
-                  alt={product.name}
-                /> */}
-
+                  <img
+                    className="max-w-[80px] max-h-[80px] object-cover"
+                    src={image}
+                    alt={`Thumbnail ${index + 1}`}
+                  />
                 </div>
               ))}
             </div>
 
-            <div className="border border-gray-200/30 max-w-100 rounded overflow-hidden">
+
+            <div className="cursor-pointer w-[100px] h-[100px] flex items-center justify-center border border-gray-300 rounded bg-black" >
                <img
-                  className="group-hover:scale-105 transition max-w-26 md:max-w-36"
-                  src={product.image[0]}
+            className="max-w-[80px] max-h-[80px] object-cover"
+                    src={product.image[0]}
                   alt={product.name}
                 />
 

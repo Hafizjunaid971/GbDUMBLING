@@ -23,8 +23,8 @@ const Cart = () => {
   const [address, setAddress] = useState([]);
   const [showAddress, setShowAddress] = useState(false);
   // state for selected address
-  const [selectedAddress, setSelectedAddress] = useState(null);
-  const [paymentOption, setPaymentOption] = useState("COD");
+const [selectedAddress, setSelectedAddress] = useState(null);
+const [paymentOption, setPaymentOption] = useState("COD");
 
   const getCart = () => {
     let tempArray = [];
@@ -36,58 +36,69 @@ const Cart = () => {
     setCartArray(tempArray);
   };
 const shippingFee = 150;
-  const getAddress = async () => {
-    try {
-      const { data } = await axios.get("/api/address/get");
-      if (data.success) {
-        setAddress(data.addresses);
-        if (data.addresses.length > 0) {
-          setSelectedAddress(data.addresses[0]);
+
+ const getAddress = async () => {
+  try {
+    const { data } = await axios.get("/api/address/get", { withCredentials: true });
+    if (data.success) {
+      setAddress(data.addresses);
+      if (data.addresses.length > 0) {
+        if (typeof setSelectedAddress === "function") {
+          setSelectedAddress(data.addresses[0]); // Ensure setSelectedAddress is a function
+        } else {
+          console.error("setSelectedAddress is not a function:", setSelectedAddress);
         }
       } else {
-        toast.error(data.message);
+        toast.error("No addresses found. Please add an address.");
       }
-    } catch (error) {
-      toast.error(error.message);
+    } else {
+      toast.error(data.message);
     }
-  };
-  useEffect(() => {
-    if (user) {
-      getAddress();
-    }
-  }, [user]);
+  } catch (error) {
+    toast.error(error.message);
+  }
+};
 
   useEffect(() => {
     if (products.length > 0 && cartItems) {
       getCart();
     }
   }, [products, cartItems]);
+ 
+
   const placeOrder = async () => {
-    try {
-      if (!selectedAddress) {
-        return toast.error("Please select an address");
-      }
-      // place order with cod
-      if (paymentOption === "COD") {
-        const { data } = await axios.post("/api/order/cod", {
+  try {
+    if (!user) {
+      toast.error("Please log in to place an order", { duration: 3000 });
+      return;
+    }
+    if (!selectedAddress) {
+      return toast.error("Please select an address");
+    }
+    if (paymentOption === "COD") {
+      const { data } = await axios.post(
+        "/api/order/cod",
+        {
           items: cartArray.map((item) => ({
             product: item._id,
             quantity: item.quantity,
           })),
           address: selectedAddress._id,
-        });
-        if (data.success) {
-          toast.success(data.message);
-          setCartItems({});
-          navigate("/my-orders");
-        } else {
-        console.log(error.message)
-        }
+        },
+        { withCredentials: true }
+      );
+      if (data.success) {
+        toast.success(data.message);
+        setCartItems({});
+        navigate("/my-orders");
+      } else {
+        toast.error(data.message);
       }
-    } catch (error) {
-      toast.error(error.message);
     }
-  };
+  } catch (error) {
+    toast.error(error.message);
+  }
+};
   return products.length > 0 && cartItems ? (
     <div className="flex flex-col md:flex-row py-16 max-w-6xl w-full px-6 mx-auto">
       <div className="flex-1 max-w-4xl">
@@ -97,9 +108,9 @@ const shippingFee = 150;
         </h1>
 
         <div className="grid grid-cols-[2fr_1fr_1fr] text-gray-500 text-base font-medium pb-3">
-          <p className="text-left">Product Details</p>
-          <p className="text-center">Subtotal</p>
-          <p className="text-center">Action</p>
+          <p className="text-left text-black">Product Details</p>
+          <p className="text-center text-black">Subtotal</p>
+          <p className="text-center text-black">Action</p>
         </div>
 
         {cartArray.map((product, index) => (
@@ -108,29 +119,27 @@ const shippingFee = 150;
             className="grid grid-cols-[2fr_1fr_1fr] text-gray-500 items-center text-sm md:text-base font-medium pt-3"
           >
             <div className="flex items-center md:gap-6 gap-3">
+              
               <div
                 onClick={() => {
                   navigate(`product/${product.category}/${product._id}`);
                   scrollTo(0, 0);
                 }}
-                className="cursor-pointer w-24 h-24 flex items-center justify-center border border-gray-300 rounded cusror-pointer"
+                className="cursor-pointer w-[100px] h-[100px] flex items-center justify-center border border-gray-300 rounded bg-black" // Unchanged: kept w-[100px] h-[100px] and bg-black
               >
-              
                 <img
-                  className="max-w-full h-full object-cover"
+                  className="max-w-[80px] max-h-[80px] object-cover"
                   src={product.image[0]}
                   alt={product.name}
                 />
-
-              </div>
-              <div>
-                <p className="hidden md:block font-semibold">{product.name}</p>
+              </div>       <div>
+                <p className="hidden md:block font-semibold text-black">{product.name}</p>
                 <div className="font-normal text-gray-500/70">
-                  <p>
-                   &nbsp; Weight: <span>{product.weight || "N/A"}</span>
+                  <p className="text-black">
+                    Weight: <span>{product.weight || "N/A"}</span>
                   </p>
-                  <div className="flex items-center">
-                    <p>&nbsp;Qty:</p>
+                  <div className="flex items-center text-black">
+                    <p>Qty:</p>
                     <select
                       onChange={(e) =>
                         updateCartItem(product._id, Number(e.target.value))
@@ -152,7 +161,7 @@ const shippingFee = 150;
                 </div>
               </div>
             </div>
-            <p className="text-center">
+            <p className="text-center text-black">
               RS{product.offerPrice * product.quantity}
             </p>
             <button
@@ -206,7 +215,7 @@ const shippingFee = 150;
         <div className="mb-6">
           <p className="text-sm font-medium uppercase">Delivery Address</p>
           <div className="relative flex justify-between items-start mt-2">
-            <p className="text-gray-500">
+            <p className="text-black">
               {selectedAddress
                 ? `${selectedAddress.street},${selectedAddress.city},${selectedAddress.state},${selectedAddress.country}`
                 : "No Address Found"}
@@ -232,8 +241,22 @@ const shippingFee = 150;
                     {address.country},
                   </p>
                 ))}
-                <p
+                {/* <p
                   onClick={() => navigate("/add-address")}
+                  className="text-indigo-500 text-center cursor-pointer p-2 hover:bg-indigo-500/10"
+                >
+                  Add address
+                </p> */}
+                <p
+                  onClick={() => {
+                    if (!user) {
+                      toast.error("Please log in to add an address", { duration: 3000 });
+                      setShowAddress(false);
+                      return;
+                    }
+                    navigate("/add-address");
+                    setShowAddress(false);
+                  }}
                   className="text-indigo-500 text-center cursor-pointer p-2 hover:bg-indigo-500/10"
                 >
                   Add address
@@ -249,18 +272,18 @@ const shippingFee = 150;
             className="w-full border border-gray-300 bg-white px-3 py-2 mt-2 outline-none"
           >
             <option value="COD">Cash On Delivery</option>
-            <option value="Online">Online Payment</option>
+            {/* <option value="Online">Online Payment</option> */}
           </select>
         </div>
 
         <hr className="border-gray-300" />
 
         <div className="text-gray-500 mt-4 space-y-2">
-          <p className="flex justify-between">
+          <p className="flex justify-between text-black">
             <span>Price</span>
             <span>RS{totalCartAmount()}</span>
           </p>
-          <p className="flex justify-between">
+          <p className="flex justify-between text-black">
             <span>Shipping Fee</span>
             <span className="text-green-600">{shippingFee}</span>
           </p>
@@ -268,7 +291,7 @@ const shippingFee = 150;
             <span>Tax (2%)</span>
             <span>RS{(totalCartAmount() * 2) / 100}</span>
           </p> */}
-          <p className="flex justify-between text-lg font-medium mt-3">
+          <p className="flex justify-between text-lg font-medium mt-3 text-black">
             <span>Total Amount:</span>
             <span>RS{totalCartAmount() + shippingFee }</span>
           </p>
@@ -286,3 +309,4 @@ const shippingFee = 150;
    : null;
 };
 export default Cart;
+

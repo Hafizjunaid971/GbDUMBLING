@@ -46,7 +46,7 @@ app.use((req, res, next) => {
 app.use(cookieParser());
 app.use(express.json());
 
-// API Routes
+// API Routes 
 app.use("/images", express.static("uploads"));
 app.use("/api/user", userRoutes);
 app.use("/api/seller", sellerRoutes);

@@ -46,6 +46,7 @@ const Navbar = () => {
       <div className="hidden sm:flex items-center gap-8 text-[#FFD700]">
         <Link to={"/"}>Home</Link>
         <Link to={"/products"}>All Products</Link>
+        <Link to={"/branches"}>Branches</Link>
 
         <div class="hidden lg:flex items-center text-sm gap-2 border border-white text-white px-3 rounded-full">
           <input
@@ -191,7 +192,9 @@ const Navbar = () => {
         <Link onClick={() => setOpen(false)} to={"/products"}>
           Products
         </Link>
-
+        <Link onClick={() => setOpen(false)} to={"/branches"}>
+          Branches
+        </Link>
         {user ? (
           <div className="relative group">
             <img src={assets.profile_icon} alt="" className="w-10" />

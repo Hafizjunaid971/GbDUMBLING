@@ -75,7 +75,8 @@ import gb23 from "./gb23.jpeg";
 import gb24 from "./gb24.jpeg";
 import gb25 from "./gb25.jpeg";
 import gb26 from "./gb26.jpeg";
-import gb1 from "./gb1.jpeg";
+import gb27 from "./gb27.jpeg";
+import gb17 from "./gb17.jpeg";
 export const assets = {
   logo,
   search_icon,
@@ -163,7 +164,22 @@ export const categories = [
 
   },
 ];
-
+export const Branches = [
+  {
+    text: "Dolmen Mall",
+    path: "Dolmen Mall",
+    image: gb27,
+    bgColor: "#000000",
+    textColor: "#FFD700",
+  },
+  {
+    text: "Bahadurabad Karachi",
+    path: "Bahadurabad Karachi",
+    image: gb17,
+    bgColor: "#000000",
+    textColor: "#FFD700",
+  },
+];
 export const footerLinks = [
   {
     title: "Quick Links",

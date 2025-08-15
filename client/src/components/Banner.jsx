@@ -1,33 +1,10 @@
-// import { Link } from "react-router-dom";
-// import { assets } from "../assets/assets";
-// import mainBanner from "../assets/gb14.jpeg";
-
-// const Banner = () => {
-//   return (
-//     <div className="relative" >
-//  <img
-//   src={mainBanner}
-//   alt="Banner"
-//   className="w-full h-60 md:h-80"
-//   style={{ width: "100%" }}
-// />
-
-
-//       <div className="absolute inset-0 flex flex-col items-center md:items-start justify-end md:justify-center pb-24 md:pb-0 md:pl-18 lg:pl-24">
-     
-//       </div>
-//     </div>
-//   );
-// };
-// export default Banner;
-
 
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { assets } from "../assets/assets";
 import banner1 from "../assets/gb21.jpeg";
-import banner2 from "../assets/gb24.jpeg"; // Apni dusri image yahan import karo
-import banner3 from "../assets/gb25.jpeg"; // Teesri image yahan import karo
+import banner2 from "../assets/gb24.jpeg"; 
+import banner3 from "../assets/gb25.jpeg"; 
 
 const images = [banner1, banner2, banner3];
 
